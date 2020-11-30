@@ -1,0 +1,2 @@
+module GUsersHelper
+end
