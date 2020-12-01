@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+    before_action :redirect_if_not_logged_in
+    
     def new
       
     end
@@ -22,5 +24,9 @@ class CommentsController < ApplicationController
     def update
 
     end
-    
+
+    def destroy
+
+    end
+
 end
