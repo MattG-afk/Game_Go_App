@@ -25,19 +25,23 @@ class CommentsController < ApplicationController
     end 
 
     def index
-
+        if @game = Game.find_by_id(params[:game_id])
+            @comments = @game.comments
+        else
+            @comments = Comment.all
+        end
     end
 
-    def edit
+    #def destroy
+    #    if authorized_to_edit?(@comment)
+    #        @comment.destroy
 
-    end
+    #end
 
-    def update
+    private
 
-    end
 
-    def destroy
-
-    end
+    def comment_params
+        params.require(:comment).permit(:game_id, :content,:stars)
 
 end
