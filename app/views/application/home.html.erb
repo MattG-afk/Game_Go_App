@@ -1,0 +1,14 @@
+<% if logged_in? %>
+      <h1>
+        Welcome <%= @current_user.first_name%>! <br>
+
+        Click create game to start or All Games to see your Games! 
+
+      </h1>
+    <%else%>
+      <h1>
+        Welcome To GameGo!<br>
+
+        Please sign up or login to see your games 
+      </h1>
+<% end %>

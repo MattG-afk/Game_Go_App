@@ -1,0 +1,30 @@
+<div class = "fields_with_errors"> <%=render 'layout/errors' %></div>
+<h1>Game:</h1>
+<%= form_for(@game) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %><br>
+  <br>
+  <%= f.label :genre %>
+  <%= f.text_area :genre %> <br>
+  <br>
+  <%= f.label :description %>
+  <%= f.text_area :description %> <br>
+ 
+
+ <h1>Comments:</h1>
+  <%= f.fields_for :comment do |i| %>
+
+  <%= i.hidden_field :user_id, :value => @current_user.id %>
+
+    <%= i.label :stars %>
+    <%= i.number_field :stars, min:0, max:5 %><br>
+ 
+    <%= i.label :content %>
+    <%= i.text_field :content %><br>
+
+    <br>
+ 
+  <% end %>
+ 
+  <%= f.submit %>
+<% end %>

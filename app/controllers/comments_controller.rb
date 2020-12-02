@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     def create
         @comment = current_user.comments.build(comment_params)
         if @comment.save
-          redirect_to comment_path(@comment)
+          redirect_to game_comments_path(@comment)
         else
             render :new
         end
@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
     end
 
     def show 
-        @comment = Comment.find_by_id(params[:id])
+        find_comment
     end 
 
     def index
@@ -32,13 +32,27 @@ class CommentsController < ApplicationController
         end
     end
 
-    #def destroy
-    #    if authorized_to_edit?(@comment)
-    #        @comment.destroy
+    def edit
+        find_comment
+    end
 
-    #end
+    def destroy
+        if authorized_to_edit?(@comment)
+            find_comment
+            @comment.destroy
+            redirect_to user_path(current_user)
+        end
+    end
 
     private
+
+    def find_comment 
+        @comment = Comment.find_by_id[params[:id]]
+        if !@comment
+            redirect_to game_comments_path
+        end
+    end
+
 
 
     def comment_params

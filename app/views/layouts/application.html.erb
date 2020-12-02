@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GameReviewer</title>
+    <title>GameGo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,26 @@
   </head>
 
   <body>
+      <div class="navbar">
+      <nav>
+     <div class="logo">
+GameGo</div>
+<ul class="menu-area">
+
+
+  <% if logged_in? %>
+  <li><a href="/">Home</a></li>
+   <li><%= link_to "Games", games_path %></li>
+  <li><%= link_to "Create Game", new_game_path %></li>
+  <li><%= link_to "Your Comments", comments_path %></li>
+   <li><%= link_to "Logout", logout_path, method:"delete" %></li>
+  <% else %>
+  <li><a href="/register">Signup</a></li>
+  <li><a href="/login">Login</a></li>
+  <% end %>
+</ul>
+</nav>    
+</div>
     <%= yield %>
   </body>
 </html>
