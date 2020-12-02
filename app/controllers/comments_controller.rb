@@ -47,7 +47,7 @@ class CommentsController < ApplicationController
     private
 
     def find_comment 
-        @comment = Comment.find_by_id[params[:id]]
+        @comment = Comment.find_by_id[params[:game_id]]
         if !@comment
             redirect_to game_comments_path
         end

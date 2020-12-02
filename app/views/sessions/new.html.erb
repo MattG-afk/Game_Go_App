@@ -1,0 +1,20 @@
+<h1>Login</h1>
+
+
+<% if flash[:notice] %>
+<h2><%= flash[:notice] %></h2>  
+<% end %>
+
+
+
+<%=form_tag("/sessions") do %>
+    <p>
+    <%= label_tag "Email:"%>   
+    <%= text_field_tag "email"%>
+    <%= label_tag "Password:"%>
+    <%= text_field_tag "password"%>
+    </p>
+    <%= submit_tag "Login"%>
+<% end %>
+
+<%= link_to "Log In with Google", '/auth/google_oauth2' %>
