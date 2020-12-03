@@ -1,0 +1,17 @@
+<h1>Register for GameGo</h1>
+
+<%=form_for(@user, url: "/signup") do |f| %>
+    <p>
+    <%= f.label "Username:"%>
+    <%= f.text_field "username"%>
+    <%= f.label "Email:"%>   
+    <%= f.text_field "email"%>
+    <%= f.label "Password:"%>
+    <%= f.text_field "password"%>
+    <%= f.label "First Name:"%>
+    <%= f.text_field "first_name"%>     
+    <%= f.label "Last Name:"%>
+    <%= f.text_field "last_name"%>
+    </p>
+    <%= f.submit "Register"%>
+<% end %>

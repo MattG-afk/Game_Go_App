@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
     skip_before_action :redirect_to_login, only: [:new, :create]
-    def new
-
+    def new 
+        @user = User.new 
+        if session[:current_user_id]
+            redirect_to "/", :notice => "Already logged in"
+        end
     end
 
     def create
@@ -9,7 +12,7 @@ class UsersController < ApplicationController
         if @user.valid?
             @user.save
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to "/login"
         else
             render :new
         end
@@ -24,6 +27,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params
+        #byebug
         params.require(:user).permit(:username, :email, :password, :first_name, :last_name)
     end
 

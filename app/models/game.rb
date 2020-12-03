@@ -1,10 +1,10 @@
 class Game < ApplicationRecord
 
     #originally comment was join table decided games makes more sense
-    #has_many :comments
-    #has_many :users, through: :comments
-    belongs_to :user
-    belongs_to :comment 
+    has_many :comments
+    has_many :users, through: :comments
+    #belongs_to :user
+    #belongs_to :comment 
 
     has_many :genres
     has_many :names

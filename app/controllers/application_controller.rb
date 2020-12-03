@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :redirect_to_login
-    helper_method :current_user, :logged_in?, :authorized_to_edit?
+    helper_method :redirect_to_login, :current_user, :logged_in?, :authorized_to_edit?
 
   private
 

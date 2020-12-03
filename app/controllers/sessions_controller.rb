@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    skip_before_action :redirect_to_login
     helper_method :auth
 
     def new
