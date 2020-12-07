@@ -3,11 +3,12 @@ class GamesController < ApplicationController
 
     def new
         @game = Game.new 
-        @game.build(game_params)
+        @game.comments.build
     end
 
     def create
-        @game = current_user.games.build(game_params)
+        @game = Game.new(game_params)
+        #byebug
         if @game.save 
             redirect_to game_path(@game)
         else
@@ -53,13 +54,13 @@ class GamesController < ApplicationController
     private
 
     def find_game 
-        @game = Game.find_by_id[:game]
+        @game = Game.find_by(id:params[:game])
         if !@game
             redirect_to games_path
         end
     end
 
     def game_params
-        params.require(:game).permit(:name, :genres, :description,user_id: [],comment_attributes:[:stars,:content])
+        params.require(:game).permit(:name, :genres, :description,comment_attributes:[:stars,:content,:user_id])
     end
 end

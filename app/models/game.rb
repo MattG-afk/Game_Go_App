@@ -6,14 +6,10 @@ class Game < ApplicationRecord
     #belongs_to :user
     #belongs_to :comment 
 
-    has_many :genres
-    has_many :names
-    has_many :descriptions
-
     accepts_nested_attributes_for :comments
 
     validates :name, presence: true  
-    validates :genre, presence: true
+    validates :genres, presence: true
     validates :name, length: {maximum: 250}
     validates :description, length: {maximum:2000}
 
