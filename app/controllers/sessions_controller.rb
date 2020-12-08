@@ -23,20 +23,17 @@ class SessionsController < ApplicationController
     end
     
     def omniauth
-        omniauth = request.env['omniauth.auth']['info']
-        user = User.find_or_create_by(email: omniauth["email"]) do |u|
-            u.username = omniauth["name"]
-            u.password = SecureRandom.hex
-        end
+        @user = User.from_omniauth(auth)
+        @user.save
         session[:current_user_id] = user.id
-        redirect_to recipes_path
+        redirect_to games_path
     end
 
 
     private
 
     def auth
-        request.env["omniauth.auth"]['info']
+        request.env['omniauth.auth']
     end
 
 end

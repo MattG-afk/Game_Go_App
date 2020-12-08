@@ -7,9 +7,10 @@ class User < ApplicationRecord
     has_many :comments, through: :games
 
     def self.from_omniauth(auth)
-        self.find_or_create_by(username: auth[:info][:email]) do |user|
-          user.email = auth[:info][:email]
-          user.password = SecureRandom.hex
+        where(email: auth.info.email).first_or_initialize do |user|
+            user.user_name = auth.info.name
+            user.email = auth.info.email]
+            user.password = SecureRandom.hex
         end
     end
 

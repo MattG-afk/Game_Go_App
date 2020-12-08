@@ -26,6 +26,7 @@ class CommentsController < ApplicationController
 
     def index
         if @game = Game.find_by_id(params[:game_id])
+            
             @comments = @game.comments
         else
             @comments = Comment.all
