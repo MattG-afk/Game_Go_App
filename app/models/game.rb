@@ -8,6 +8,8 @@ class Game < ApplicationRecord
 
     accepts_nested_attributes_for :comments
 
+    scope :search_by_name, -> (search_name){where("name = ?", search_name)}
+
     validates :name, presence: true  
     validates :genres, presence: true
     validates :name, length: {maximum: 250}

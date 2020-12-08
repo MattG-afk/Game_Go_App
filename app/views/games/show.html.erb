@@ -1,11 +1,11 @@
-<h2><%= @game.name %></h2>
-<h2><%= @game.genre %></h2>
-<h2><%= @game.description %></h>
+<h2><%= @games.name %></h2>
+<h2><%= @games.genres %></h2>
+<h2><%= @games.description %></h>
 
 <h3>Comments</h3>
 
 <ul>
-  <% @game.comment.each do |comment| %>
+  <% @games.comments.each do |comment| %>
    <li><%= comment.stars %> <br>
 
    <%= comment.content %></li>

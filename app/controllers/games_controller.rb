@@ -17,15 +17,10 @@ class GamesController < ApplicationController
     end
 
     def show
-         find_game
+        @games = Game.find(params[:id])
     end 
 
     def index
-        if params[:user_id]
-            @games = User.find_by_id[:user_id].games
-        elsif params[:name]
-            @games = Game.search_by(params[:name])
-        else
             @games = Game.all
         end
     end
@@ -54,7 +49,7 @@ class GamesController < ApplicationController
     private
 
     def find_game 
-        @game = Game.find_by(id:params[:game])
+        @games = Game.find(params[:id])
         if !@game
             redirect_to games_path
         end
@@ -63,4 +58,4 @@ class GamesController < ApplicationController
     def game_params
         params.require(:game).permit(:name, :genres, :description,comment_attributes:[:stars,:content,:user_id])
     end
-end
+
