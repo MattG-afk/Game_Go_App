@@ -17,12 +17,11 @@ class GamesController < ApplicationController
     end
 
     def show
-        @games = Game.find(params[:id])
+        @game = Game.find(params[:id])
     end 
 
     def index
-            @games = Game.all
-        end
+        @game = Game.all
     end
 
     def edit
@@ -39,23 +38,23 @@ class GamesController < ApplicationController
     end
 
     def destroy
-        if authorized_to_edit?(@game)
-            find_game
-            @game.destroy
-            redirect_to user_path(current_user)
-        end
+        @game = Game.find_by(id: params[:id])
+
+        #byebug
+        #if #authorized_to_edit?(@game)
+        #find_game
+        @game.destroy
+        redirect_to game_path(@game)
+        #end
     end
 
     private
 
     def find_game 
-        @games = Game.find(params[:id])
-        if !@game
-            redirect_to games_path
-        end
+        @game = Game.find_by(id: params[:id])
     end
 
     def game_params
-        params.require(:game).permit(:name, :genres, :description,comment_attributes:[:stars,:content,:user_id])
+        params.require(:game).permit(:name, :genres, :description,comments_attributes:[:stars,:content,:user_id])
     end
-
+end

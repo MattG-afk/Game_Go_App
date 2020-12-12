@@ -20,8 +20,8 @@ class CommentsController < ApplicationController
 
     end
 
-    def show 
-        find_comment
+    def show
+        @comments = Game.find(params[:id])
     end 
 
     def index
@@ -48,7 +48,8 @@ class CommentsController < ApplicationController
     private
 
     def find_comment 
-        @comment = Comment.find_by_id[params[:game_id]]
+        @comment = Game.find(params[:id])    
+
         if !@comment
             redirect_to game_comments_path
         end

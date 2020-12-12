@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new' 
   post '/signup' => 'users#create' 
   delete '/logout' => 'sessions#destroy'
-  get '/auth/google_oauth2/callback' => 'sessions#omniauth'
+  get '/auth/:provider/callback' => 'sessions#omniauth'
+  post 'games/:id/edit' => 'games#edit'
 
   resources :comments
+
 
   resources :users, only: [:show]
 

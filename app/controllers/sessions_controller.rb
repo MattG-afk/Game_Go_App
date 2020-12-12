@@ -25,7 +25,7 @@ class SessionsController < ApplicationController
     def omniauth
         @user = User.from_omniauth(auth)
         @user.save
-        session[:current_user_id] = user.id
+        session[:user_id] = @user.id
         redirect_to games_path
     end
 

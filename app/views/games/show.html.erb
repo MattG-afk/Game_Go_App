@@ -1,13 +1,18 @@
-<h2><%= @games.name %></h2>
-<h2><%= @games.genres %></h2>
-<h2><%= @games.description %></h>
+<h2><%= @game.name %></h2>
+<h2><%= @game.genres %></h2>
+<h2><%= @game.description %></h>
 
-<h3>Comments</h3>
+<h3>Comment</h3>
 
 <ul>
-  <% @games.comments.each do |comment| %>
+  <% @game.comments.each do |comment| %>
+  <h3>Stars</h3>
    <li><%= comment.stars %> <br>
-
+    <h3>Review</h3>
    <%= comment.content %></li>
   <% end %>
 </ul>
+
+<%= link_to "Edit Game and/or Review", edit_game_path %>
+
+<%= link_to 'Delete Game and/or Review', @game, method: :delete, data: { confirm: 'Are you sure?' } %>

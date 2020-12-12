@@ -10,19 +10,22 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
+    if session[:user_id].present?
+        user = User.find_by(:id => session[:user_id])
+    end
   end
 
-  def authorized_to_edit?(game)
-    game.user == current_user
-  end  
+  #def authorized_to_edit?(game)
+    #byebug
+    #game.id == current_user
+  #end  
 
   def redirect_to_login
     redirect_to login_path if !logged_in?
   end
 
   def login(user)
-    session[:current_user_id] = @user.id
+    session[:user_id] = @user.id
     end
 
 end

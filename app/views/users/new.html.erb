@@ -1,5 +1,7 @@
 <h1>Register for GameGo</h1>
 
+<div class = "fields_with_errors"><%= render 'layouts/user_login_error' %></div>
+
 <%=form_for(@user, url: "/signup") do |f| %>
     <p>
     <%= f.label "Username:"%>

@@ -1,5 +1,6 @@
 <h1>Game:</h1>
 <%= form_for(@game) do |f| %>
+<p>
   <%= f.label :name %>
   <%= f.text_field :name %><br>
   <br>
@@ -8,16 +9,17 @@
   <br>
   <%= f.label :description %>
   <%= f.text_area :description %> <br>
- 
+ </p>
 
  <h1>Comments:</h1>
+
   <%= f.fields_for :comments do |i| %>
 
   <%= i.hidden_field :user_id, :value => current_user.id %>
-
+    <h3>Stars</h3>
     <%= i.label :stars %>
     <%= i.number_field :stars, min:0, max:5 %><br>
- 
+    <h3>Comment</h3>
     <%= i.label :content %>
     <%= i.text_field :content %><br>
 
