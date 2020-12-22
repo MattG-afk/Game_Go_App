@@ -19,7 +19,9 @@ After signup, please feel free to create your own library of games that you have
 Additional info:
 
 When you edit a game comment it will show your previous comment in top to bottom succession.
-If you have any issues please contact me through github and I will fix anything that comes up 
+If you have any issues please contact me through github and I will fix anything that comes up.
+
+Thank You for checking out my project!
 
 
 License
