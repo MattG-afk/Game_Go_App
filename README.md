@@ -5,7 +5,9 @@ Install Instructions (for local environment)
 If you'd like to check this out yourself fork it from GitHub
 Run bundle install
 In the terminal run rails s to start on your local server
+
 Usage
+
 If you dont already have an account sign up or use your Google account.
 If you already have an account Login with your email & password.
 
