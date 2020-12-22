@@ -3,3 +3,9 @@
 <% @game.each do |games| %>
   <li><%= link_to games.name, games %></li>
 <% end %>
+
+<%= form_tag("/games", method: "get") do %>
+<%= label_tag(:name, "Search Game by name") %>
+  <%= text_field_tag(:name) %>
+  <%= submit_tag("Search") %>
+<% end %>

@@ -21,7 +21,14 @@ class GamesController < ApplicationController
     end 
 
     def index
-        @game = Game.all
+        if params[:user_id]
+            @game = User.find(params[:user_id]).game
+        elsif params[:name]
+            byebug
+            @game = Game.search_by_name(params[:name])
+        else
+            @game = Game.all
+        end
     end
 
     def edit
@@ -44,7 +51,7 @@ class GamesController < ApplicationController
         #if #authorized_to_edit?(@game)
         #find_game
         @game.destroy
-        redirect_to game_path(@game)
+        redirect_to games_path(@game)
         #end
     end
 
